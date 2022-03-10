@@ -1,0 +1,19 @@
+#镜像来自于dockerfile创建,例如
+#FROM myphp:7.3.29-fpm-alpine
+#WORKDIR /www
+
+version: "3"
+
+networks:
+  mynet:
+    #检查是否有名为mynet的自定义网络，没有就报错
+    external: true
+
+services:
+  php:
+    #如果本地自定义镜像没上传网络
+    build:
+      #dockerfile目录
+      context: ./dockerfile
+      #dockerfile文件名，不加这个参数使用默认名
+      dockerfile: php

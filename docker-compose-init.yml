@@ -1,0 +1,35 @@
+#用于获取子服务的配置文件， 所以没有挂载任务目录和卷。如果有子服务的配置文件可以忽略
+version: "3"
+
+networks:
+  mynet:
+    #检查是否有名为mynet的自定义网络，没有就报错
+    external: true
+
+services:
+  php:
+    image: $PHP_IMAGE:$PHP_TAG
+    container_name: $PHP_CONTAINER_NAME
+    restart: unless-stopped
+    networks:
+      - mynet
+    ports:
+    - 9000:9000
+
+  nginx:
+    image: $NGINX:$NGINX_TAG
+    container_name: $NGINX_CONTAINER_NAME
+    restart: unless-stopped
+    networks:
+      - mynet
+    ports:
+      - 80:80
+
+  mysql:
+    image: $MYSQL:$NGINX_TAG
+    container_name: $MYSQL_CONTAINER_NAME
+    restart: unless-stopped
+    networks:
+      - mynet
+    ports:
+      - 3306:3306
