@@ -57,6 +57,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PWD
     volumes:
-        - mysql:/var/lib/mysql
+        - mysql:/var/lib/mysql:rw
         - /etc/timezone:/etc/timezone
         - /etc/localtime:/etc/localtime
+        - $DOCKER_DATA_DIR/$MYSQL_IMAGE/$MYSQL_TAG/conf.d/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+        - $DOCKER_DATA_DIR/$MYSQL_IMAGE/$MYSQL_TAG/mysql.conf.d/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:ro
