@@ -61,3 +61,19 @@ services:
         - /etc/timezone:/etc/timezone
         - /etc/localtime:/etc/localtime
         - $DOCKER_DATA_DIR/$MYSQL_IMAGE/$MYSQL_TAG/my.cnf:/etc/mysql/my.cnf:ro
+
+
+  redis:
+    image: redis:${REDIS_VERSION}
+    container_name: redis
+    ports:
+      - "${REDIS_HOST_PORT}:6379"
+    volumes:
+      - ${REDIS_CONF_FILE}:/etc/redis.conf:ro
+      - ${DATA_DIR}/redis:/data/:rw
+    restart: always
+    entrypoint: ["redis-server", "/etc/redis.conf"]
+    environment:
+      TZ: "$TZ"
+    networks:
+      - default
