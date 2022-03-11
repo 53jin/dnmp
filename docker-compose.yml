@@ -37,7 +37,7 @@ services:
       - 80:80
     volumes:
       - $DOCUMENT_ROOT:/www
-      - $DOCKER_DATA_DIR/logs/$NGINX_TAG:/var/log/nginx
+      - $DOCKER_DATA_DIR/logs/$NGINX_TAG:/var/log/nginx:rw
       - $DOCKER_DATA_DIR/$NGINX_IMAGE/$NGINX_TAG/conf.d:/etc/nginx/conf.d
       - $DOCKER_DATA_DIR/$NGINX_IMAGE/$NGINX_TAG/nginx.conf:/etc/nginx/nginx.conf
       - $DOCKER_DATA_DIR/$NGINX_IMAGE/$NGINX_TAG/fastcgi.conf:/etc/nginx/fastcgi.conf
@@ -60,5 +60,4 @@ services:
         - mysql:/var/lib/mysql:rw
         - /etc/timezone:/etc/timezone
         - /etc/localtime:/etc/localtime
-        - $DOCKER_DATA_DIR/$MYSQL_IMAGE/$MYSQL_TAG/conf.d/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
-        - $DOCKER_DATA_DIR/$MYSQL_IMAGE/$MYSQL_TAG/mysql.conf.d/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:ro
+        - $DOCKER_DATA_DIR/$MYSQL_IMAGE/$MYSQL_TAG/my.cnf:/etc/mysql/my.cnf:ro
