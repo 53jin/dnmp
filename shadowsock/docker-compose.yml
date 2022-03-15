@@ -12,7 +12,7 @@ services:
     volumes:
       - /root/.acme.sh:/root/.acme.sh:ro
     environment:
-      - PASSWORD=47.88QEQEkzzZ.
+      - PASSWORD=
       - DNS_ADDRS=8.8.8.8,114.114.114.114
       - SERVER_PORT=9994
       - ARGS=--plugin v2ray-plugin --plugin-opts server;tls;host=jss.duusuu.com;path=/v2ray;cert=/root/.acme.sh/jss.duusuu.com/fullchain.cer;key=/root/.acme.sh/jss.duusuu.com/jss.duusuu.com.key -u
