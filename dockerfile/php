@@ -1,0 +1,3 @@
+FROM myphp:7.3.29-fpm-alpine
+
+WORKDIR /www

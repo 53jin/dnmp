@@ -1,0 +1,19 @@
+#安装证书 https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E
+#acme.sh --issue --dns dns_dp -d aa.com
+version: "3.7"
+services:
+  shadowsocks-libev:
+    container_name: ssserver
+    image: acrisliu/shadowsocks-libev:latest
+    user: root
+    ports:
+      - "9994:9994/tcp"
+      - "9994:9994/udp"
+    volumes:
+      - /root/.acme.sh:/root/.acme.sh:ro
+    environment:
+      - PASSWORD=
+      - DNS_ADDRS=8.8.8.8,114.114.114.114
+      - SERVER_PORT=9994
+      - ARGS=--plugin v2ray-plugin --plugin-opts server;tls;host=jss.duusuu.com;path=/v2ray;cert=/root/.acme.sh/jss.duusuu.com/fullchain.cer;key=/root/.acme.sh/jss.duusuu.com/jss.duusuu.com.key -u
+    restart: always
