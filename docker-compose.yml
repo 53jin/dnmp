@@ -66,17 +66,16 @@ services:
 
 
   redis:
-    image: ${REDIS_IMAGE}:${REDIS_VERSION}
+    image: ${REDIS_IMAGE}:${REDIS_TAG}
     container_name: ${REDIS_CONTAINER_NAME}
     ports:
       - "${REDIS_HOST_PORT}:6379"
     volumes:
       - $DOCKER_DATA_DIR/$REDIS_IMAGE/$REDIS_TAG/redis.conf:/etc/redis.conf:ro
-      - redis:/data/:rw
-    restart: unless-stopped
-    entrypoint: ["redis-server", "/etc/redis.conf"]
-    environment:
+      - redis:/data
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
+    restart: unless-stopped
+    entrypoint: ["redis-server", "/etc/redis.conf"]
     networks:
       - mynet

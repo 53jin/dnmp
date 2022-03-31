@@ -2,7 +2,7 @@
 #FROM myphp:7.3.29-fpm-alpine
 #WORKDIR /www
 
-version: "3"
+version: "3.5"
 
 networks:
   mynet:
