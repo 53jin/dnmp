@@ -24,7 +24,7 @@ services:
       - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php:/usr/local/etc/php
       - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php-fpm.d:/usr/local/etc/php-fpm.d
       - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - $DOCUMENT_ROOT:/www
+      - $DOCUMENT_ROOT:/www/work
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
 
