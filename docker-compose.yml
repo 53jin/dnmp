@@ -20,11 +20,11 @@ services:
     ports:
     - 9000:9000
     volumes:
-      - $DOCKER_DATA_DIR/logs/$PHP_TAG:/var/log/php
+      - $DOCKER_DATA_DIR/logs/$PHP_TAG/php:/var/log/php
       - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php:/usr/local/etc/php
       - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php-fpm.d:/usr/local/etc/php-fpm.d
       - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - $DOCUMENT_ROOT:/www/work
+      - $DOCUMENT_ROOT:/homw/www
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
 
@@ -38,8 +38,8 @@ services:
     ports:
       - 80:80
     volumes:
-      - $DOCUMENT_ROOT:/www
-      - $DOCKER_DATA_DIR/logs/$NGINX_TAG:/var/log/nginx:rw
+      - $DOCUMENT_ROOT:/home/www
+      - $DOCKER_DATA_DIR/logs/$NGINX_TAG/nginx:/var/log/nginx:rw
       - $DOCKER_DATA_DIR/$NGINX_IMAGE/$NGINX_TAG/conf.d:/etc/nginx/conf.d
       - $DOCKER_DATA_DIR/$NGINX_IMAGE/$NGINX_TAG/nginx.conf:/etc/nginx/nginx.conf
       - $DOCKER_DATA_DIR/$NGINX_IMAGE/$NGINX_TAG/fastcgi.conf:/etc/nginx/fastcgi.conf

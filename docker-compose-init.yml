@@ -17,7 +17,7 @@ services:
     - 9000:9000
 
   nginx:
-    image: $NGINX:$NGINX_TAG
+    image: $NGINX_IMAGE:$NGINX_TAG
     container_name: $NGINX_CONTAINER_NAME
     restart: unless-stopped
     networks:
@@ -26,7 +26,7 @@ services:
       - 80:80
 
   mysql:
-    image: $MYSQL:$NGINX_TAG
+    image: $MYSQL_IMAGE:$MYSQL_TAG
     container_name: $MYSQL_CONTAINER_NAME
     restart: unless-stopped
     networks:

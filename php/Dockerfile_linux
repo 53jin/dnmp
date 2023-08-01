@@ -1,6 +1,6 @@
 FROM php:7.3.29-fpm-alpine
 #扩展
-ARG PHP_EXTENSIONS=zip,pdo_mysql,mysqli,mbstring,gd,curl,opcache,pcntl,redis,rdkafka
+ARG PHP_EXTENSIONS=zip,pdo_mysql,mysqli,mbstring,gd,curl,pcntl,redis,rdkafka
 #时区
 ARG TZ=UTC
 # 仓库源 maybe 加环境判断切换内网源
@@ -44,4 +44,4 @@ RUN apk --no-cache add curl
 
 EXPOSE 9000
 
-WORKDIR /www/work
+WORKDIR /home/www
