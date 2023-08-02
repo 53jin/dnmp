@@ -1,4 +1,5 @@
 FROM php:7.3.29-fpm-alpine
+ENV DOCUMENT_ROOT /
 #扩展
 ARG PHP_EXTENSIONS=bcmath,pdo_mysql,mysqli,gd,pcntl
 #时区
@@ -6,6 +7,7 @@ ARG TZ=UTC
 # 仓库源 maybe 加环境判断切换内网源
 ARG CONTAINER_PACKAGE_URL=mirrors.tencent.com
 RUN sed -i "s/dl-cdn.alpinelinux.org/${CONTAINER_PACKAGE_URL}/g" /etc/apk/repositories
+RUN mkdir -p /var/log/php
 
 # 修复DNS问题
 # RUN echo nameserver 8.8.8.8 > /etc/resolv.conf
@@ -53,4 +55,4 @@ RUN apk --no-cache add curl
 
 EXPOSE 9000
 
-WORKDIR /www/work
+WORKDIR $DOCUMENT_ROOT
