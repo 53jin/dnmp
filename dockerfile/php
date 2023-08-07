@@ -1,4 +1,4 @@
 FROM myphp:7.3.29-fpm-alpine
-ENV DOCUMENT_ROOT /
+ENV DOCUMENT_ROOT $DOCUMENT_ROOT
 RUN mkdir -p /var/log/php
 WORKDIR $DOCUMENT_ROOT
