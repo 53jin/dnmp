@@ -1,4 +1,6 @@
-FROM php:7.3.29-fpm-alpine
+ARG ORIGIN_PHP_IMAGE=php
+ARG ORIGIN_PHP_TAG=7.3.29-fpm-alpine
+FROM ${ORIGIN_PHP_IMAGE}:${ORIGIN_PHP_TAG}
 ARG DOCUMENT_ROOT=/var
 #扩展
 ARG PHP_EXTENSIONS=bcmath,pdo_mysql,mysqli,gd,pcntl

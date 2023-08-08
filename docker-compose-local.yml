@@ -19,3 +19,5 @@ services:
       dockerfile: Dockerfile_linux
       args:
         DOCUMENT_ROOT: $PHP_DOCUMENT_ROOT
+        ORIGIN_PHP_IMAGE: $ORIGIN_PHP_IMAGE
+        ORIGIN_PHP_TAG: $ORIGIN_PHP_TAG
