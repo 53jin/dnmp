@@ -1,5 +1,5 @@
 FROM php:7.3.29-fpm-alpine
-ENV DOCUMENT_ROOT $DOCUMENT_ROOT
+ARG DOCUMENT_ROOT=/var
 #扩展
 ARG PHP_EXTENSIONS=bcmath,zip,pdo_mysql,mysqli,mbstring,gd,curl,pcntl,redis,rdkafka
 #时区
