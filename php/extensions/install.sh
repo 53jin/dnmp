@@ -358,9 +358,17 @@ fi
 if [[ -z "${EXTENSIONS##*,imagick,*}" ]]; then
     echo "---------- Install imagick ----------"
 	apk add --no-cache file-dev
+    apk add --no-cache imagemagick
 	apk add --no-cache imagemagick-dev
-    printf "\n" | pecl install imagick-3.4.4
-    docker-php-ext-enable imagick
+    
+    isPhpVersionGreaterOrEqual 8 0
+    if [[ "$?" = "1" ]]; then
+        installExtensionFromTgz imagick-3.7.0
+    else
+        printf "\n" | pecl install imagick-3.4.4
+        docker-php-ext-enable psr
+    fi
+    
 fi
 
 if [[ -z "${EXTENSIONS##*,rar,*}" ]]; then
@@ -534,11 +542,17 @@ if [[ -z "${EXTENSIONS##*,redis,*}" ]]; then
     echo "---------- Install redis ----------"
     isPhpVersionGreaterOrEqual 7 0
     if [[ "$?" = "1" ]]; then
-        installExtensionFromTgz redis-5.2.2
+        isPhpVersionGreaterOrEqual 8 0
+        if [[ "$?" = "1" ]]; then
+            installExtensionFromTgz redis-5.3.7
+        else
+            installExtensionFromTgz redis-5.2.2
+        fi
     else
         printf "\n" | pecl install redis-4.3.0
         docker-php-ext-enable redis
     fi
+    
 fi
 
 if [[ -z "${EXTENSIONS##*,apcu,*}" ]]; then
