@@ -21,3 +21,15 @@ services:
         DOCUMENT_ROOT: $PHP_DOCUMENT_ROOT
         ORIGIN_PHP_IMAGE: $ORIGIN_PHP_IMAGE
         ORIGIN_PHP_TAG: $ORIGIN_PHP_TAG
+
+  php8:
+    #如果本地自定义镜像没上传网络
+    build:
+      #dockerfile目录
+      context: ./php
+      #dockerfile文件名，不加这个参数使用默认名
+      dockerfile: Dockerfile_linux
+      args:
+        DOCUMENT_ROOT: $PHP_DOCUMENT_ROOT
+        ORIGIN_PHP_IMAGE: $ORIGIN_PHP_IMAGE
+        ORIGIN_PHP_TAG: $ORIGIN_PHP_TAG      

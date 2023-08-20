@@ -3,7 +3,7 @@ ARG ORIGIN_PHP_TAG=7.3.29-fpm-alpine
 FROM ${ORIGIN_PHP_IMAGE}:${ORIGIN_PHP_TAG}
 ARG DOCUMENT_ROOT=/var
 #扩展
-ARG PHP_EXTENSIONS=bcmath,zip,pdo_mysql,mysqli,mbstring,gd,curl,pcntl,redis,rdkafka,imagick
+ARG PHP_EXTENSIONS=bcmath,zip,pdo_mysql,mysqli,mbstring,gd,curl,pcntl,redis,rdkafka,imagick,exif
 #时区
 ARG TZ=UTC
 # 仓库源 maybe 加环境判断切换内网源
