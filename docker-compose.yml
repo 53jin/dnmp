@@ -49,6 +49,24 @@ services:
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime    
 
+  php74:
+    image: $PHP_IMAGE:$PHP_TAG
+    container_name: $PHP_CONTAINER_NAME
+    restart: unless-stopped
+    networks:
+      - mynet
+    ports:
+      - $PHP_PORT:9000
+    environment:
+      DOCUMENT_ROOT: $PHP_DOCUMENT_ROOT
+    volumes:
+      - $DOCKER_DATA_DIR/logs/$PHP_TAG/php:/var/log/php
+      - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php:/usr/local/etc/php
+      - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php-fpm.d:/usr/local/etc/php-fpm.d
+      - $DOCKER_DATA_DIR/$PHP_IMAGE/$PHP_TAG/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - $DOCUMENT_ROOT:$PHP_DOCUMENT_ROOT
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
 
   nginx:
     image: $NGINX_IMAGE:$NGINX_TAG
